@@ -25,10 +25,11 @@ export function normalizeRecords(responseBody) {
 }
 
 export async function fetchResource(endpointPath) {
-  const response = await fetch(`${apiOrigin}${endpointPath}`)
+  const endpointUrl = endpointPath.startsWith('http') ? endpointPath : `${apiOrigin}${endpointPath}`
+  const response = await fetch(endpointUrl)
 
   if (!response.ok) {
-    throw new Error(`Unable to load ${endpointPath}: ${response.status}`)
+    throw new Error(`Unable to load ${endpointUrl}: ${response.status}`)
   }
 
   const body = await response.json()

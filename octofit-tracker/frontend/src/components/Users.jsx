@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 import { fetchResource } from '../api'
 
+const usersEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+  : 'http://localhost:8000/api/users/'
+
 function Users() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState('')
@@ -9,7 +13,7 @@ function Users() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('/api/users/')
+    fetchResource(usersEndpoint)
       .then((records) => {
         if (isActive) {
           setUsers(records)

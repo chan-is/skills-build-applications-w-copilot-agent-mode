@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 import { fetchResource } from '../api'
 
+const teamsEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+  : 'http://localhost:8000/api/teams/'
+
 function Teams() {
   const [teams, setTeams] = useState([])
   const [error, setError] = useState('')
@@ -9,7 +13,7 @@ function Teams() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('/api/teams/')
+    fetchResource(teamsEndpoint)
       .then((records) => {
         if (isActive) {
           setTeams(records)

@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 import { fetchResource } from '../api'
 
+const leaderboardEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+  : 'http://localhost:8000/api/leaderboard/'
+
 function Leaderboard() {
   const [entries, setEntries] = useState([])
   const [error, setError] = useState('')
@@ -9,7 +13,7 @@ function Leaderboard() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('/api/leaderboard/')
+    fetchResource(leaderboardEndpoint)
       .then((records) => {
         if (isActive) {
           setEntries(records)

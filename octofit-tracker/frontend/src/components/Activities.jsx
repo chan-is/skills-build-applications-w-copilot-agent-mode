@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 import { fetchResource } from '../api'
 
+const activitiesEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+  : 'http://localhost:8000/api/activities/'
+
 function Activities() {
   const [activities, setActivities] = useState([])
   const [error, setError] = useState('')
@@ -9,7 +13,7 @@ function Activities() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('/api/activities/')
+    fetchResource(activitiesEndpoint)
       .then((records) => {
         if (isActive) {
           setActivities(records)

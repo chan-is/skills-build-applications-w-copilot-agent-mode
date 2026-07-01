@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 import { fetchResource } from '../api'
 
+const workoutsEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
+  : 'http://localhost:8000/api/workouts/'
+
 function Workouts() {
   const [workouts, setWorkouts] = useState([])
   const [error, setError] = useState('')
@@ -9,7 +13,7 @@ function Workouts() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('/api/workouts/')
+    fetchResource(workoutsEndpoint)
       .then((records) => {
         if (isActive) {
           setWorkouts(records)
