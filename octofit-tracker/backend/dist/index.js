@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
-const mongoose_1 = __importDefault(require("mongoose"));
 const database_1 = require("./config/database");
 const Activity_1 = require("./models/Activity");
 const Leaderboard_1 = require("./models/Leaderboard");
@@ -83,7 +82,7 @@ app.get('/api/', (_req, res) => {
 });
 async function startServer() {
     try {
-        await mongoose_1.default.connect(database_1.mongoUri);
+        await (0, database_1.connectToDatabase)();
         console.log(`MongoDB connected: ${database_1.mongoUri}`);
         app.listen(port, () => {
             console.log(`Backend API listening on ${baseUrl}`);

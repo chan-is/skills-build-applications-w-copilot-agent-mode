@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
-const mongoose_1 = __importDefault(require("mongoose"));
 const database_1 = require("../config/database");
 const Activity_1 = require("../models/Activity");
 const Leaderboard_1 = require("../models/Leaderboard");
@@ -14,7 +13,7 @@ const Workout_1 = require("../models/Workout");
 dotenv_1.default.config();
 async function seedDatabase() {
     console.log('Seed the octofit_db database with test data');
-    await mongoose_1.default.connect(database_1.mongoUri);
+    await (0, database_1.connectToDatabase)();
     await Promise.all([
         User_1.UserModel.deleteMany({}),
         Team_1.TeamModel.deleteMany({}),
@@ -127,11 +126,11 @@ async function seedDatabase() {
         },
     ]);
     console.log('Seed complete: users, teams, activities, leaderboard, and workouts populated.');
-    await mongoose_1.default.disconnect();
+    await (0, database_1.disconnectFromDatabase)();
 }
 seedDatabase().catch(async (error) => {
     console.error('Seed failed:', error);
-    await mongoose_1.default.disconnect();
+    await (0, database_1.disconnectFromDatabase)();
     process.exit(1);
 });
 //# sourceMappingURL=seed.js.map

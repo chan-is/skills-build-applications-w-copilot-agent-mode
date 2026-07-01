@@ -1,9 +1,8 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
-import mongoose from 'mongoose';
 
-import { mongoUri } from './config/database';
+import { connectToDatabase, mongoUri } from './config/database';
 import { ActivityModel } from './models/Activity';
 import { LeaderboardModel } from './models/Leaderboard';
 import { TeamModel } from './models/Team';
@@ -97,7 +96,7 @@ app.get('/api/', (_req, res) => {
 
 async function startServer(): Promise<void> {
   try {
-    await mongoose.connect(mongoUri);
+    await connectToDatabase();
     console.log(`MongoDB connected: ${mongoUri}`);
 
     app.listen(port, () => {
