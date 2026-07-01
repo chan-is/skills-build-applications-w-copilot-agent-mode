@@ -9,7 +9,7 @@ function Leaderboard() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('leaderboard')
+    fetchResource('/api/leaderboard/')
       .then((records) => {
         if (isActive) {
           setEntries(records)

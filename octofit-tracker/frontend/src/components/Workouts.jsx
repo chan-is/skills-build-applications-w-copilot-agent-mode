@@ -9,7 +9,7 @@ function Workouts() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('workouts')
+    fetchResource('/api/workouts/')
       .then((records) => {
         if (isActive) {
           setWorkouts(records)

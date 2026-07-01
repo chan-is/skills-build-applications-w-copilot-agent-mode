@@ -9,7 +9,7 @@ function Teams() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('teams')
+    fetchResource('/api/teams/')
       .then((records) => {
         if (isActive) {
           setTeams(records)

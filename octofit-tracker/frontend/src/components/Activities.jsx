@@ -9,7 +9,7 @@ function Activities() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('activities')
+    fetchResource('/api/activities/')
       .then((records) => {
         if (isActive) {
           setActivities(records)

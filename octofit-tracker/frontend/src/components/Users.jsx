@@ -9,7 +9,7 @@ function Users() {
   useEffect(() => {
     let isActive = true
 
-    fetchResource('users')
+    fetchResource('/api/users/')
       .then((records) => {
         if (isActive) {
           setUsers(records)
