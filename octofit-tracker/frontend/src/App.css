@@ -1,0 +1,143 @@
+#root {
+  width: 100%;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(17, 96, 91, 0.1), rgba(236, 178, 46, 0.12)),
+    #f7f4ee;
+  color: #1d2528;
+  padding: 32px;
+}
+
+.topbar {
+  align-items: end;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr auto;
+  margin: 0 auto 32px;
+  max-width: 1180px;
+}
+
+.topbar h1 {
+  font-size: clamp(2rem, 4vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+  max-width: 720px;
+}
+
+.eyebrow {
+  color: #11605b;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.api-url {
+  color: #5f696b;
+  font-size: 0.92rem;
+  margin: 14px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.nav-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.nav-pills .nav-link {
+  border: 1px solid rgba(17, 96, 91, 0.25);
+  border-radius: 999px;
+  color: #1d2528;
+  font-weight: 700;
+  padding: 10px 14px;
+}
+
+.nav-pills .nav-link.active {
+  background: #11605b;
+  color: #ffffff;
+}
+
+main,
+.content-panel {
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.data-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.data-card {
+  background: #ffffff;
+  border: 1px solid rgba(29, 37, 40, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(36, 43, 45, 0.08);
+  padding: 20px;
+}
+
+.data-card h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+
+.data-card p {
+  color: #5f696b;
+  margin: 0 0 16px;
+}
+
+.data-card dl {
+  display: grid;
+  gap: 6px 12px;
+  grid-template-columns: max-content 1fr;
+  margin: 0;
+}
+
+.data-card dt {
+  color: #697577;
+  font-weight: 800;
+}
+
+.data-card dd {
+  margin: 0;
+}
+
+.leaderboard-table {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 20px;
+  }
+
+  .topbar {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .nav-pills {
+    justify-content: flex-start;
+  }
+}
